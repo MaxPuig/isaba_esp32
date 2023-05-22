@@ -52,14 +52,25 @@ void handleRoot() {
   analog_temp = 100 * (analogRead(temp_pin));
   temperatura = 5.0 * (analog_temp / 4095.0);
 
+  // IMPRIMIR PER CONSOLA
+  Serial.print("Lluminositat: ");
+  Serial.println(lluminositat);
+  Serial.print("Humitat: ");
+  Serial.println(humitat);
+  Serial.print("Nivell d'aigua: ");
+  Serial.println(nivell);
+  Serial.print("Temperatura: ");
+  Serial.println(temperatura);
+  Serial.println();
+
   // RECARREGAR PÀGINA CADA 5s
-  server.sendHeader("Refresh", "5");
+  server.sendHeader("Refresh", "2");
   String html = "<html><body>";
   // INFO DELS SENSORS
   html += "<p>Lluminositat: " + String(lluminositat) + "%</p>";
   html += "<p>Humitat: " + String(humitat) + "%</p>";
   html += "<p>Nivell d'aigua: " + String(nivell) + "%</p>";
-  html += "<p>Temperatura: " + String(temperatura) + "ºC</p>";
+  html += "<p>Temperatura: " + String(temperatura) + "&deg;C</p>";
 
   // INFO DELS ACTUADORS
   if (estat_ventilador) html += "<p>Ventilador: ON</p>";
@@ -70,11 +81,11 @@ void handleRoot() {
   else html += "<p>LEDS: OFF</p>";
 
   // BOTONS
-  html += "<form method='post' action='/ventilador'><button type='submit'>Ventilador ON/OFF</button>";
-  html += "<form method='post' action='/bomba'><button type='submit'>Bomba ON/OFF</button>";
-  html += "<form method='post' action='/leds'><button type='submit'>Leds ON/OFF</button>";
+  html += "<form method='post' action='/ventilador'><button type='submit'>Ventilador ON/OFF</button></form>";
+  html += "<form method='post' action='/bomba'><button type='submit'>Bomba ON/OFF</button></form>";
+  html += "<form method='post' action='/leds'><button type='submit'>Leds ON/OFF</button></form>";
   
-  html += "</form></body></html>";
+  html += "</body></html>";
   server.send(200, "text/html", html);
 }
 
