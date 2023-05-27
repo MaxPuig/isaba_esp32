@@ -1,0 +1,67 @@
+<head>
+    <title>Sensor Data</title>
+    <style>
+        .alert {
+            background-color: red;
+            color: white;
+            font-weight: bold;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 18px;
+        }
+
+        .sensors,
+        .info-section {
+            font-size: 20px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        #title-image {
+            display: block;
+            margin: 0 auto;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+        <img src="https://i.ibb.co/tMnQftd/4-RSwihe-Imgur.png" alt="Title Image"> <!-- Add the image here -->
+        <div class="sensors" style="border: 1px solid black; margin-bottom: 10px;">
+            <!-- INFO DELS SENSORS -->
+            <p>Lluminositat: 80%</p>
+            <p>Humitat: 65%</p>
+            <p>Nivell d'aigua: 10%</p>
+            <p>Temperatura: 25°C (Objectiu: 22°C)</p>
+        </div>
+        <div style="display: flex; justify-content: space-between;">
+            <div class="info-section" style="border: 1px solid black; padding: 10px; margin-bottom: 10px;">
+                <!-- INFO VENTILADOR -->
+                <p>Ventilador: ON</p>
+                <form method="post" action="/ventilador"><button type="submit">Ventilador ON/OFF</button></form>
+            </div>
+            <div class="info-section" style="border: 1px solid black; padding: 10px; margin-bottom: 10px;">
+                <!-- INFO BOMBA -->
+                <p>Bomba: OFF</p>
+                <form method="post" action="/bomba"><button type="submit">Bomba ON/OFF</button></form>
+            </div>
+        </div>
+        <div class="alert">
+            <p style="margin: 0;">Alerta Nivell d'aigua Baix</p>
+        </div>
+        <!-- BOTONS -->
+        <div style="display: flex; justify-content: center;">
+            <form method="post" action="/objtempup" style="margin-right: 10px;"><button type="submit">Pujar Temperatura
+                    Objectiu</button></form>
+            <form method="post" action="/objtempdown"><button type="submit">Baixar Temperatura Objectiu</button></form>
+        </div>
+    </div>
+
+
+
+</body>
